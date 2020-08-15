@@ -1,0 +1,27 @@
+{
+  "name": "nodejs",
+  "version": "1.0.0",
+  "description": "NodeJsTraining",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AndreyPanovA/NodeJsBasis.git"
+  },
+  "keywords": [
+    "js",
+    "nodejs",
+    "javascript"
+  ],
+  "author": "Panov Andrey <panov3107@mail.ru>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AndreyPanovA/NodeJsBasis/issues"
+  },
+  "homepage": "https://github.com/AndreyPanovA/NodeJsBasis#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
