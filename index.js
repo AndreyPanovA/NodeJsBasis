@@ -15,12 +15,24 @@ app.use(express.static("public")) // чтобы видели стили из п�
 
 // 
 app.get("/", (req, res) => {
-    res.render("index")
+    res.render("index", {
+        title: "Главная страница",
+        isHome: true
+    })
     // res.status(200).sendFile(path.join(__dirname, "views", "index.html"))
 })
-app.get("/about", (req, res) => {
-    res.render("about")
+app.get("/courses", (req, res) => {
+    res.render("courses", {
+        title: "Курсы",
+        isCourses: true
+    })
     // res.status(200).sendFile(path.join(__dirname, "views", "about.html"))
+})
+app.get("/add", (req, res) => {
+    res.render("add", {
+        title: "Новый курс",
+        isAdd: true
+    })
 })
 
 
