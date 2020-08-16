@@ -10,6 +10,10 @@ const hbs = exphbs.create({
 app.engine("hbs", hbs.engine) // регистрация hbs, что он вообще есть
 app.set("view engine", "hbs") // регистрация hbs,начинаем с ним работать
 app.set("views", "views") // нужная папка
+
+app.use(express.static("public")) // чтобы видели стили из папки public
+
+// 
 app.get("/", (req, res) => {
     res.render("index")
     // res.status(200).sendFile(path.join(__dirname, "views", "index.html"))
