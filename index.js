@@ -17,7 +17,9 @@ app.set("view engine", "hbs") // регистрация hbs,начинаем с 
 app.set("views", "views") // нужная папка
 
 app.use(express.static("public")) // чтобы видели стили из папки public
-
+// Добаваляем, чтобы получить объект с данными из формы в req.body
+app.use(express.urlencoded({ extended: true }))
+// Добаваляем, чтобы получить объект с данными из формы в req.body
 // 
 // app.get("/", (req, res) => {
 //     res.render("index", {

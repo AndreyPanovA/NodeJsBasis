@@ -6,4 +6,8 @@ router.get("/", (req, res) => {
         isAdd: true
     })
 })
+router.post("/", (req, res) => {
+    console.log(req.body)
+    res.redirect("/")
+})
 module.exports = router
