@@ -1,0 +1,23 @@
+<h1>Change {{course.title}}</h1>
+<form action="/add" method="POST">
+    <div class="input-field col s12">
+        <input value="{{course.title}}" placeholder="Placeholder" name="title" id="title" type="text" class="validate"
+            required>
+        <label for="title">Course name</label>
+        <span class=" helper-text" data-error="Enter name"></span>
+    </div>
+    <div class="input-field col s12">
+        <input value="{{course.price}}" placeholder="Placeholder" name="price" id="price" type="text" class="validate"
+            required>
+        <label for="price">Course price</label>
+        <span class="helper-text" data-error="Enter price"></span>
+    </div>
+    <div class="input-field col s12">
+        <input value="{{course.img}}" placeholder="Placeholder" name="img" id="img" type="text" class="validate"
+            required>
+        <label for="img">Course image url</label>
+        <span class="helper-text" data-error="Enter image url"></span>
+    </div>
+    <input type="hidden" name="id" value="{{course.id}}">
+    <button class="btn btn-primary">Change course</button>
+</form>

@@ -10,6 +10,20 @@ router.get("/", async (req, res) => {
     })
     // res.status(200).sendFile(path.join(__dirname, "views", "about.html"))
 })
+router.get("/:id/edit", async (req, res) => {
+    const course = await Course.getById(req.params.id)
+    if (!req.query.allow) {
+        return res.redirect("/")
+    }
+    else {
+        res.render("course-edit", {
+            title: `Курс ${course.title}`,
+            isCourses: true,
+            course
+        })
+    }
+
+})
 router.get("/:id", async (req, res) => {
     const course = await Course.getById(req.params.id)
     res.render("course", {
