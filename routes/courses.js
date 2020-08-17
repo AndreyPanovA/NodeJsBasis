@@ -10,4 +10,11 @@ router.get("/", async (req, res) => {
     })
     // res.status(200).sendFile(path.join(__dirname, "views", "about.html"))
 })
+// router.get("/:id", (req, res) => {
+//     const courses = await Course.getAll()
+//     res.render("courses", {
+//         title: `${courses[0].title}`
+
+//     })
+// })
 module.exports = router

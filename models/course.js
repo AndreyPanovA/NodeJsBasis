@@ -31,9 +31,6 @@ class Course {
                     }
                 })
         })
-
-
-
     }
     static getAll() {
         return new Promise((resolve, reject) => {
