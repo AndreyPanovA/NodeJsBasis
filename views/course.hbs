@@ -1,0 +1,27 @@
+<h1>Ваши курсы</h1>
+{{!-- {{#if course}} --}}
+{{!-- <div class="">{{courses}}</div> --}}
+<div class="">
+    {{!-- {{#each courses}} --}}
+    <div class="row" style="max-width: 400px; margin:auto">
+        <div class="col md-6">
+            <div class="card">
+                <div class="card-image">
+                    <img src={{course.img}} alt="{{course.title}}">
+                    <span class="card-title">{{title}}</span>
+                </div>
+                <div class="card-content">
+                    {{!-- <span class="card-title">Card Title</span> --}}
+                    <p class="price">{{course.price}}</p>
+                </div>
+                {{!-- <div class="card-action">
+                    <a href="/courses/{{id}}">Открыть курс</a>
+                </div> --}}
+            </div>
+        </div>
+    </div>
+    {{!-- {{/each}} --}}
+</div>
+{{!-- {{else}} --}}
+{{!-- <p>Курсов пока нет</p> --}}
+{{!-- {{/if}} --}}

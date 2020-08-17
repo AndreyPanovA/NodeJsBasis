@@ -44,8 +44,10 @@ class Course {
 
             })
         })
-
-
+    }
+    static async getById(id) {
+        const course = await Course.getAll()
+        return course.find(c => c.id === id)
     }
 }
 module.exports = Course
