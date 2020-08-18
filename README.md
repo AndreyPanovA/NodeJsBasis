@@ -1,4 +1,4 @@
-# NodeJsBasis
+# NodeJsBasis ( в работе )
 
 Приложение курсов с использованием handlebars
 1) git init
