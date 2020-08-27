@@ -6,6 +6,7 @@ const app = express()
 const homeRoutes = require("./routes/home")
 const addRoutes = require("./routes/add")
 const coursesRoutes = require("./routes/courses")
+const cardRoutes = require("./routes/card")
 // routes
 
 const hbs = exphbs.create({
@@ -45,6 +46,7 @@ app.use("/courses", coursesRoutes)
 // })
 
 app.use("/add", addRoutes)
+app.use("/card", cardRoutes)
 
 
 const PORT = process.env.PORT || 5000

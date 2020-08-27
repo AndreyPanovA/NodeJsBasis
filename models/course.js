@@ -49,5 +49,24 @@ class Course {
         const course = await Course.getAll()
         return course.find(c => c.id === id)
     }
+    static async update(course) {
+        const courses = await Course.getAll()
+        let idx = null;
+        courses.forEach((element, index) => {
+            if (element.id === course.id) { idx = index }
+        });
+        courses[idx] = course
+        return new Promise((resolve, reject) => {
+            fs.writeFile(path.join(__dirname, "..", "data", "courses.json"), JSON.stringify(courses),
+                (err) => {
+                    if (err) {
+                        reject(err)
+                    }
+                    else {
+                        resolve()
+                    }
+                })
+        })
+    }
 }
 module.exports = Course
