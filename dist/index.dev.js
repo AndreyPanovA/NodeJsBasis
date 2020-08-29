@@ -23,13 +23,12 @@ var addRoutes = require("./routes/add");
 var coursesRoutes = require("./routes/courses");
 
 var cardRoutes = require("./routes/card"); // routes
+// const hbs = expressHandlebars.create({
+//     defaultLayout: "main", // дефолтная папка
+//     extname: "hbs"
+// })
+// app.engine("hbs", hbs.engine) // регистрация hbs, что он вообще есть
 
-
-var hbs = expressHandlebars.create({
-  defaultLayout: "main",
-  // дефолтная папка
-  extname: "hbs"
-}); // app.engine("hbs", hbs.engine) // регистрация hbs, что он вообще есть
 
 app.engine('hbs', expressHandlebars({
   handlebars: allowInsecurePrototypeAccess(Handlebars),
@@ -87,7 +86,8 @@ function start() {
           _context.next = 4;
           return regeneratorRuntime.awrap(mongoose.connect(url, {
             useNewUrlParser: true,
-            useUnifiedTopology: true
+            useUnifiedTopology: true,
+            useFindAndModify: false
           }));
 
         case 4:

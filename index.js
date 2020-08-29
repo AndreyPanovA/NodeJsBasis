@@ -16,10 +16,10 @@ const cardRoutes = require("./routes/card")
 // routes
 
 
-const hbs = expressHandlebars.create({
-    defaultLayout: "main", // дефолтная папка
-    extname: "hbs"
-})
+// const hbs = expressHandlebars.create({
+//     defaultLayout: "main", // дефолтная папка
+//     extname: "hbs"
+// })
 // app.engine("hbs", hbs.engine) // регистрация hbs, что он вообще есть
 
 app.engine('hbs', expressHandlebars({
@@ -73,7 +73,8 @@ async function start() {
         // const url = "mongodb+srv://panovAndrey:12345@cluster0.ia9xh.mongodb.net/<dbname>?retryWrites=true&w=majority"
         await mongoose.connect(url, {
             useNewUrlParser: true,
-            useUnifiedTopology: true
+            useUnifiedTopology: true,
+            useFindAndModify: false
         })
         app.listen(PORT, () => {
             console.log("Server is running on port: ", PORT)

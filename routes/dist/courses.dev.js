@@ -110,5 +110,34 @@ router.post("/edit", function _callee4(req, res) {
       }
     }
   });
+}); // mongoDB
+
+router.post("/remove", function _callee5(req, res) {
+  return regeneratorRuntime.async(function _callee5$(_context5) {
+    while (1) {
+      switch (_context5.prev = _context5.next) {
+        case 0:
+          _context5.prev = 0;
+          _context5.next = 3;
+          return regeneratorRuntime.awrap(Course.deleteOne({
+            _id: req.body.id
+          }));
+
+        case 3:
+          res.redirect("/courses");
+          _context5.next = 9;
+          break;
+
+        case 6:
+          _context5.prev = 6;
+          _context5.t0 = _context5["catch"](0);
+          console.log(_context5.t0);
+
+        case 9:
+        case "end":
+          return _context5.stop();
+      }
+    }
+  }, null, null, [[0, 6]]);
 });
 module.exports = router;
