@@ -15,7 +15,19 @@ const coursesRoutes = require("./routes/courses")
 const cardRoutes = require("./routes/card")
 // routes
 // Models
-const user = require("./models/user")
+const User = require("./models/user")
+// midleware for User
+app.use(async (req, res, next) => {
+    try {
+        const user = await User.findById("5f4ac413165b9b8a3f21c0b3")
+        req.user = user
+        next()
+    } catch (e) {
+        console.log(e)
+    }
+
+
+})
 
 
 // const hbs = expressHandlebars.create({
@@ -78,6 +90,18 @@ async function start() {
             useUnifiedTopology: true,
             useFindAndModify: false
         })
+        const candidate = await User.findOne()
+        if (!candidate) {
+            const user = new User({
+                email: "panov3107@mail.ru",
+                name: "Andrey",
+                cart: {
+                    items: []
+                }
+            })
+            await user.save()
+
+        }
         app.listen(PORT, () => {
             console.log("Server is running on port: ", PORT)
         })

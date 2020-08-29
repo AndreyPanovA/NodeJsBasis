@@ -25,7 +25,8 @@ router.post("/", function _callee(req, res) {
           course = new Course({
             title: req.body.title,
             price: req.body.price,
-            img: req.body.img
+            img: req.body.img,
+            userId: req.user
           });
           _context.prev = 2;
           _context.next = 5;
