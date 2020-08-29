@@ -5,7 +5,8 @@ const Course = require("../models/course")
 const router = Router()
 router.get("/", async (req, res) => {
     // const courses = await Course.getAll()
-    const courses = await Course.find()
+    // const courses = await Course.find()
+    const courses = await Course.find().populate("userId", "email name").select("price title img") // тоже самое, только если вытягивать конкретные поля 
     res.render("courses", {
         title: "Курсы",
         isCourses: true,

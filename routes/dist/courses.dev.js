@@ -13,10 +13,11 @@ router.get("/", function _callee(req, res) {
       switch (_context.prev = _context.next) {
         case 0:
           _context.next = 2;
-          return regeneratorRuntime.awrap(Course.find());
+          return regeneratorRuntime.awrap(Course.find().populate("userId", "email name").select("price title img"));
 
         case 2:
           courses = _context.sent;
+          // тоже самое, только если вытягивать конкретные поля 
           res.render("courses", {
             title: "Курсы",
             isCourses: true,
