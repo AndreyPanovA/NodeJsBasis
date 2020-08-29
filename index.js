@@ -23,7 +23,9 @@ const hbs = expressHandlebars.create({
 // app.engine("hbs", hbs.engine) // регистрация hbs, что он вообще есть
 
 app.engine('hbs', expressHandlebars({
-    handlebars: allowInsecurePrototypeAccess(Handlebars)
+    handlebars: allowInsecurePrototypeAccess(Handlebars),
+    defaultLayout: "main", // дефолтная папка
+    extname: "hbs"
 }));
 
 app.set("views", path.join(__dirname, "views")) // нужная папка
