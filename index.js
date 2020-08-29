@@ -1,5 +1,6 @@
 const express = require("express")
 const path = require("path")
+const mongoose = require("mongoose")
 const exphbs = require("express-handlebars")
 const app = express()
 // routes
@@ -54,7 +55,22 @@ app.use("/card", cardRoutes)
 
 const PORT = process.env.PORT || 5000
 
+async function start() {
+    try {
+        const url = "mongodb+srv://panovAndrey:12345@cluster0.ia9xh.mongodb.net/shop"
+        // const url = "mongodb+srv://panovAndrey:12345@cluster0.ia9xh.mongodb.net/<dbname>?retryWrites=true&w=majority"
+        await mongoose.connect(url, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true
+        })
+        app.listen(PORT, () => {
+            console.log("Server is running on port: ", PORT)
+        })
 
-app.listen(PORT, () => {
-    console.log("Server is running on port: ", PORT)
-})
+    } catch (e) {
+        console.log(e)
+
+    }
+
+}
+start()

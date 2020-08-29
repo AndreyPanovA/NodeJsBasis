@@ -20,7 +20,6 @@ if ($card) {
             fetch(`/card/remove/${id}`, {
                 method: "delete"
             }).then(res => res.json()).then(card => {
-
                 if (card.courses.length) {
                     const html = card.courses.map(el => {
                         return ` 
@@ -38,7 +37,5 @@ if ($card) {
                 }
             })
         }
-
-
     })
 }

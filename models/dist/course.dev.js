@@ -1,24 +1,21 @@
-const {
-    Schema,
-    model
-} = require("mongoose")
+"use strict";
 
-const course = new Schema({
-    title: {
-        type: String,
-        required: true
-    },
-    price: {
-        type: Number,
-        required: true
-    },
-    img: String
+var _require = require("mongoose"),
+    Schema = _require.Schema,
+    model = _require.model;
 
-
-})
-module.exports = model("Course", course)
-
-// До mongoDB
+var course = new Schema({
+  title: {
+    type: String,
+    required: true
+  },
+  price: {
+    type: Number,
+    required: true
+  },
+  img: String
+});
+module.exports = model("Course", course); // До mongoDB
 // const uuid = require("uuid/v4") // библиотека для генерации id
 // const fs = require("fs") // работает с файловой системой ( встроенный )
 // const path = require("path")
@@ -36,7 +33,6 @@ module.exports = model("Course", course)
 //             img: this.img,
 //             id: this.id
 //         }
-
 //     }
 //     async save() {
 //         const courses = await Course.getAll()
@@ -62,7 +58,6 @@ module.exports = model("Course", course)
 //                 else {
 //                     resolve(JSON.parse(content))
 //                 }
-
 //             })
 //         })
 //     }

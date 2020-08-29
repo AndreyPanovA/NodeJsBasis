@@ -4,6 +4,8 @@ var express = require("express");
 
 var path = require("path");
 
+var mongoose = require("mongoose");
+
 var exphbs = require("express-handlebars");
 
 var app = express(); // routes
@@ -61,6 +63,40 @@ app.use("/courses", coursesRoutes); // app.get("/add", (req, res) => {
 app.use("/add", addRoutes);
 app.use("/card", cardRoutes);
 var PORT = process.env.PORT || 5000;
-app.listen(PORT, function () {
-  console.log("Server is running on port: ", PORT);
-});
+
+function start() {
+  var url;
+  return regeneratorRuntime.async(function start$(_context) {
+    while (1) {
+      switch (_context.prev = _context.next) {
+        case 0:
+          _context.prev = 0;
+          url = "mongodb+srv://panovAndrey:12345@cluster0.ia9xh.mongodb.net/shop"; // const url = "mongodb+srv://panovAndrey:12345@cluster0.ia9xh.mongodb.net/<dbname>?retryWrites=true&w=majority"
+
+          _context.next = 4;
+          return regeneratorRuntime.awrap(mongoose.connect(url, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true
+          }));
+
+        case 4:
+          app.listen(PORT, function () {
+            console.log("Server is running on port: ", PORT);
+          });
+          _context.next = 10;
+          break;
+
+        case 7:
+          _context.prev = 7;
+          _context.t0 = _context["catch"](0);
+          console.log(_context.t0);
+
+        case 10:
+        case "end":
+          return _context.stop();
+      }
+    }
+  }, null, null, [[0, 7]]);
+}
+
+start();
