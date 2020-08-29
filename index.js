@@ -1,7 +1,12 @@
 const express = require("express")
 const path = require("path")
 const mongoose = require("mongoose")
-const exphbs = require("express-handlebars")
+// const exphbs = require("express-handlebars")
+const Handlebars = require("handlebars")
+const expressHandlebars = require('express-handlebars');
+const {
+    allowInsecurePrototypeAccess
+} = require('@handlebars/allow-prototype-access')
 const app = express()
 // routes
 const homeRoutes = require("./routes/home")
@@ -11,13 +16,18 @@ const cardRoutes = require("./routes/card")
 // routes
 
 
-const hbs = exphbs.create({
+const hbs = expressHandlebars.create({
     defaultLayout: "main", // дефолтная папка
     extname: "hbs"
 })
-app.engine("hbs", hbs.engine) // регистрация hbs, что он вообще есть
-app.set("view engine", "hbs") // регистрация hbs,начинаем с ним работать
-app.set("views", "views") // нужная папка
+// app.engine("hbs", hbs.engine) // регистрация hbs, что он вообще есть
+
+app.engine('hbs', expressHandlebars({
+    handlebars: allowInsecurePrototypeAccess(Handlebars)
+}));
+
+app.set("views", path.join(__dirname, "views")) // нужная папка
+app.set('view engine', 'hbs'); // регистрация hbs,начинаем с ним работать
 
 app.use(express.static("public")) // чтобы видели стили из папки public
 // Добаваляем, чтобы получить объект с данными из формы в req.body

@@ -4,9 +4,15 @@ var express = require("express");
 
 var path = require("path");
 
-var mongoose = require("mongoose");
+var mongoose = require("mongoose"); // const exphbs = require("express-handlebars")
 
-var exphbs = require("express-handlebars");
+
+var Handlebars = require("handlebars");
+
+var expressHandlebars = require('express-handlebars');
+
+var _require = require('@handlebars/allow-prototype-access'),
+    allowInsecurePrototypeAccess = _require.allowInsecurePrototypeAccess;
 
 var app = express(); // routes
 
@@ -19,16 +25,18 @@ var coursesRoutes = require("./routes/courses");
 var cardRoutes = require("./routes/card"); // routes
 
 
-var hbs = exphbs.create({
+var hbs = expressHandlebars.create({
   defaultLayout: "main",
   // дефолтная папка
   extname: "hbs"
-});
-app.engine("hbs", hbs.engine); // регистрация hbs, что он вообще есть
+}); // app.engine("hbs", hbs.engine) // регистрация hbs, что он вообще есть
 
-app.set("view engine", "hbs"); // регистрация hbs,начинаем с ним работать
+app.engine('hbs', expressHandlebars({
+  handlebars: allowInsecurePrototypeAccess(Handlebars)
+}));
+app.set("views", path.join(__dirname, "views")); // нужная папка
 
-app.set("views", "views"); // нужная папка
+app.set('view engine', 'hbs'); // регистрация hbs,начинаем с ним работать
 
 app.use(express["static"]("public")); // чтобы видели стили из папки public
 // Добаваляем, чтобы получить объект с данными из формы в req.body
