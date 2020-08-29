@@ -23,7 +23,10 @@ var addRoutes = require("./routes/add");
 var coursesRoutes = require("./routes/courses");
 
 var cardRoutes = require("./routes/card"); // routes
-// const hbs = expressHandlebars.create({
+// Models
+
+
+var user = require("./models/user"); // const hbs = expressHandlebars.create({
 //     defaultLayout: "main", // дефолтная папка
 //     extname: "hbs"
 // })

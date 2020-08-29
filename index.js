@@ -14,6 +14,8 @@ const addRoutes = require("./routes/add")
 const coursesRoutes = require("./routes/courses")
 const cardRoutes = require("./routes/card")
 // routes
+// Models
+const user = require("./models/user")
 
 
 // const hbs = expressHandlebars.create({
