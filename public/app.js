@@ -20,14 +20,13 @@ if ($card) {
             fetch(`/card/remove/${id}`, {
                 method: "delete"
             }).then(res => res.json()).then(card => {
-
                 if (card.courses.length) {
                     const html = card.courses.map(el => {
                         return ` 
                         <tr>
                         <td>${el.title}</td>
                         <td>${el.count}</td>
-                        <td><button class="btn btn-small js-remove" data-id=${el.id}>Удалить</button></td>
+                        <td><button class="btn btn-small js-remove" data-id=${el._id}>Удалить</button></td>
                     </tr>
                         `
                     }).join("")
@@ -38,7 +37,5 @@ if ($card) {
                 }
             })
         }
-
-
     })
 }

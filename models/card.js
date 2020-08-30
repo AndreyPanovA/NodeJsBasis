@@ -1,12 +1,12 @@
 const path = require("path")
 const fs = require("fs")
 const p = path.join(path.dirname(process.mainModule.filename), "data", "card.json")
-class Card {
+class Cart {
     constructor() {
 
     }
     static async add(course) {
-        const card = await Card.fetch()
+        const card = await Cart.fetch()
         let idx = null
         card.courses.forEach((element, index) => {
             if (element.id === course.id) {
@@ -28,7 +28,7 @@ class Card {
         }
         card.price += +course.price
         return new Promise((resolve, reject) => {
-            fs.writeFile(p, JSON.stringify(card), (err) => {
+            fs.writeFile(p, JSON.stringify(cart), (err) => {
                 if (err) {
                     reject(err)
                 } else {
@@ -49,21 +49,21 @@ class Card {
         })
     }
     static async remove(id) {
-        const card = await Card.fetch()
-        let idx = card.courses.findIndex((el) => el.id === id)
-        const course = card.courses[idx]
+        const cart = await Cart.fetch()
+        let idx = cart.courses.findIndex((el) => el.id === id)
+        const course = cart.courses[idx]
         if (course.count == 1) {
             // Удалить
-            card.courses = card.courses.filter(el => {
+            cart.courses = cart.courses.filter(el => {
                 return el.id !== id;
             });
 
         } else {
             course.count--
         }
-        card.price -= course.price
+        cart.price -= course.price
         return new Promise((resolve, reject) => {
-            fs.writeFile(p, JSON.stringify(card), (err) => {
+            fs.writeFile(p, JSON.stringify(cart), (err) => {
                 if (err) {
                     reject(err)
                 } else {
@@ -75,4 +75,4 @@ class Card {
 
     }
 }
-module.exports = Card
+module.exports = Cart

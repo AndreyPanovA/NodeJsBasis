@@ -19,5 +19,9 @@
         <span class="helper-text" data-error="Enter image url"></span>
     </div>
     <input type="hidden" name="id" value="{{course.id}}">
-    <button class="btn btn-primary">Change course</button>
+    <button type="submit" class="btn btn-primary">Change course</button>
+</form>
+<form action="/courses/remove" method="POST" style="margin-top: 15px;">
+    <input type="hidden" name="id" value="{{course.id}}">
+    <button class="btn btn-primary red">Удалить курс</button>
 </form>
