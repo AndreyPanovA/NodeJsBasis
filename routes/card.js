@@ -15,6 +15,12 @@ function mapCartItems(cart) {
     }))
 
 }
+
+function computePrice(courses) {
+    return courses.reduce((total, course) => {
+        return total += course.price * course.count
+    }, 0)
+}
 router.post("/add", async (req, res) => {
     // const course = await Course.getById(req.body.id)
     const course = await Course.findById(req.body.id)
@@ -28,16 +34,19 @@ router.delete("/remove/:id", async (req, res) => {
     const card = await Card.remove(req.params.id)
     res.status(200).json(card)
 })
-router.get("/", async (req, res) => {
-    // const card = await Card.fetch()
-    const user = await req.user.populate("cart.items.courseId")
+
+router.get('/', async (req, res) => {
+    const user = await req.user
+        .populate('cart.items.courseId')
+        .execPopulate()
+
     const courses = mapCartItems(user.cart)
-    console.log(user.cart.items[0].courseId._doc)
-    res.render("card", {
-        title: "Basket",
+
+    res.render('card', {
+        title: 'Корзина',
         isCard: true,
         courses: courses,
-        price: 0
+        price: computePrice(courses)
     })
 })
 module.exports = router

@@ -1,7 +1,7 @@
 const {
     Schema,
     model
-} = require("mongoose")
+} = require('mongoose')
 
 const course = new Schema({
     title: {
@@ -15,12 +15,11 @@ const course = new Schema({
     img: String,
     userId: {
         type: Schema.Types.ObjectId,
-        ref: "User"
+        ref: 'User'
     }
-
-
 })
-module.exports = model("Course", course)
+
+module.exports = model('Course', course)
 
 // До mongoDB
 // const uuid = require("uuid/v4") // библиотека для генерации id
