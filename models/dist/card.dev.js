@@ -12,14 +12,14 @@ var fs = require("fs");
 
 var p = path.join(path.dirname(process.mainModule.filename), "data", "card.json");
 
-var Card =
+var Cart =
 /*#__PURE__*/
 function () {
-  function Card() {
-    _classCallCheck(this, Card);
+  function Cart() {
+    _classCallCheck(this, Cart);
   }
 
-  _createClass(Card, null, [{
+  _createClass(Cart, null, [{
     key: "add",
     value: function add(course) {
       var card, idx, candidate;
@@ -28,7 +28,7 @@ function () {
           switch (_context.prev = _context.next) {
             case 0:
               _context.next = 2;
-              return regeneratorRuntime.awrap(Card.fetch());
+              return regeneratorRuntime.awrap(Cart.fetch());
 
             case 2:
               card = _context.sent;
@@ -52,7 +52,7 @@ function () {
 
               card.price += +course.price;
               return _context.abrupt("return", new Promise(function (resolve, reject) {
-                fs.writeFile(p, JSON.stringify(card), function (err) {
+                fs.writeFile(p, JSON.stringify(cart), function (err) {
                   if (err) {
                     reject(err);
                   } else {
@@ -95,33 +95,33 @@ function () {
   }, {
     key: "remove",
     value: function remove(id) {
-      var card, idx, course;
+      var cart, idx, course;
       return regeneratorRuntime.async(function remove$(_context3) {
         while (1) {
           switch (_context3.prev = _context3.next) {
             case 0:
               _context3.next = 2;
-              return regeneratorRuntime.awrap(Card.fetch());
+              return regeneratorRuntime.awrap(Cart.fetch());
 
             case 2:
-              card = _context3.sent;
-              idx = card.courses.findIndex(function (el) {
+              cart = _context3.sent;
+              idx = cart.courses.findIndex(function (el) {
                 return el.id === id;
               });
-              course = card.courses[idx];
+              course = cart.courses[idx];
 
               if (course.count == 1) {
                 // Удалить
-                card.courses = card.courses.filter(function (el) {
+                cart.courses = cart.courses.filter(function (el) {
                   return el.id !== id;
                 });
               } else {
                 course.count--;
               }
 
-              card.price -= course.price;
+              cart.price -= course.price;
               return _context3.abrupt("return", new Promise(function (resolve, reject) {
-                fs.writeFile(p, JSON.stringify(card), function (err) {
+                fs.writeFile(p, JSON.stringify(cart), function (err) {
                   if (err) {
                     reject(err);
                   } else {
@@ -139,7 +139,7 @@ function () {
     }
   }]);
 
-  return Card;
+  return Cart;
 }();
 
-module.exports = Card;
+module.exports = Cart;
