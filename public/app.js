@@ -26,7 +26,7 @@ if ($card) {
                         <tr>
                         <td>${el.title}</td>
                         <td>${el.count}</td>
-                        <td><button class="btn btn-small js-remove" data-id=${el.id}>Удалить</button></td>
+                        <td><button class="btn btn-small js-remove" data-id=${el._id}>Удалить</button></td>
                     </tr>
                         `
                     }).join("")
