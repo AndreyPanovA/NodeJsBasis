@@ -1,6 +1,6 @@
 # NodeJsBasis ( в работе )
 
-Приложение курсов с использованием handlebars
+Приложение курсов с использованием handlebars mongoDb
 1) git init
 2) git clone git@github.com:AndreyPanovA/NodeJsBasis.git
 3) npm install
