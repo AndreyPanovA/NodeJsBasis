@@ -3,9 +3,7 @@
 var _require = require("express"),
     Router = _require.Router;
 
-var router = Router();
-
-var Card = require("../models/card");
+var router = Router(); // const Card = require("../models/card")
 
 var Course = require("../models/course");
 
@@ -16,14 +14,15 @@ router.post("/add", function _callee(req, res) {
       switch (_context.prev = _context.next) {
         case 0:
           _context.next = 2;
-          return regeneratorRuntime.awrap(Course.getById(req.body.id));
+          return regeneratorRuntime.awrap(Course.findById(req.body.id));
 
         case 2:
           course = _context.sent;
           _context.next = 5;
-          return regeneratorRuntime.awrap(Card.add(course));
+          return regeneratorRuntime.awrap(req.user.addToCart(course));
 
         case 5:
+          // 
           res.redirect("/card");
 
         case 6:

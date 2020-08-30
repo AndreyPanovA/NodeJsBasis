@@ -2,11 +2,14 @@ const {
     Router
 } = require("express")
 const router = Router()
-const Card = require("../models/card")
+// const Card = require("../models/card")
 const Course = require("../models/course")
 router.post("/add", async (req, res) => {
-    const course = await Course.getById(req.body.id)
-    await Card.add(course)
+    // const course = await Course.getById(req.body.id)
+    const course = await Course.findById(req.body.id)
+    // await Card.add(course)
+    await req.user.addToCart(course)
+    // 
     res.redirect("/card")
 
 })
